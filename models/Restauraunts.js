@@ -1,9 +1,11 @@
-const { name } = require("ejs");
 const mongoose = require("mongoose");
 
-const restaurauntsSchema = new mongoose.Schema({
-
-    name: String,
+const restaurantSchema = new mongoose.Schema({
+    
+    name: {
+      type: String,
+      required: true,
+    },
     hasDineIn: Boolean,
     hasDriveThrough: Boolean,
     category: {
@@ -14,6 +16,6 @@ const restaurauntsSchema = new mongoose.Schema({
 
 }, {timestamps: true});
 
-const Restaurant = mongoose.model("Restaurants", restaurauntsSchema);
+const Restaurant = mongoose.model("Restaurant", restaurantSchema);
 
 module.exports = Restaurant;
