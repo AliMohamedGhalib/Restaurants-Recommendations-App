@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sections</title>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <h1>All Sections</h1>
+    <% if (user) { %>
+        <a href="/categories/new">Create a New Section</a>
+    <% } %>
+    <% for (let category of categories) { %>
+        <p>
+            <a href="/categories/<%= category._id %>"><%= category.name %></a>
+        </p>
+    <% } %>
+</body>
+</html>
