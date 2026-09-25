@@ -55,6 +55,8 @@ app.use(passUserToView)
 
 // Routes go here
 app.use('/auth',authController)
+app.use('/restaurants', restaurantController);
+app.use('/categories', categoryController);
 app.use('/',indexController)
 
 
