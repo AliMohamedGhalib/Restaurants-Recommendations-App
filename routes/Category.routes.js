@@ -1,3 +1,10 @@
+const express = require("express");
+const router = express.Router();
+const Category = require("../models/Category.js");
+const isSignedIn = require("../middleware/is-signed-in.js");
+
+
+
 router.get("/", async (req, res) => {
   const categories = await Category.find()
   res.render("categories/index.ejs", { categories })
@@ -8,9 +15,10 @@ router.get("/new", isSignedIn, (req, res) => {
 })
 
 router.post("/", isSignedIn, async (req, res) => {
-  await Category.create(req.body)
+  await Category.create({ ...req.body, owner: req.session.user._id })
   res.redirect("/categories")
 })
+
 
 router.get("/:id", async (req, res) => {
   const category = await Category.findById(req.params.id)
