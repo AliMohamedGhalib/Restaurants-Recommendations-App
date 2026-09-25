@@ -22,3 +22,31 @@ router.get("/:id", async (req, res) => {
   res.render("restaurants/show.ejs", { restaurant })
 })
 
+
+router.get("/:id/edit", isSignedIn, async (req, res) => {
+  const restaurant = await Restaurant.findById(req.params.id)
+  if (restaurant.owner.toString() !== req.session.user._id.toString()) {
+    return res.redirect("/restaurants")
+  }
+  res.render("restaurants/edit.ejs", { restaurant })
+})
+
+router.put("/:id", isSignedIn, async (req, res) => {
+  const restaurant = await Restaurant.findById(req.params.id)
+  if (restaurant.owner.toString() !== req.session.user._id.toString()) {
+    return res.redirect("/restaurants")
+  }
+  await Restaurant.findByIdAndUpdate(req.params.id, req.body)
+  res.redirect(`/restaurants/${req.params.id}`)
+})
+
+router.delete("/:id", isSignedIn, async (req, res) => {
+  const restaurant = await Restaurant.findById(req.params.id)
+  if (restaurant.owner.toString() !== req.session.user._id.toString()) {
+    return res.redirect("/restaurants")
+  }
+  await Restaurant.findByIdAndDelete(req.params.id)
+  res.redirect("/restaurants")
+})
+
+module.exports = router
