@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= category.name %></title>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <h1><%= category.name %></h1>
+    <% if (user && category.owner.toString() === user._id.toString()) { %>
+        <a href="/categories/<%= category._id %>/edit">Edit</a>
+
+        <form action="/categories/<%= category._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
+        </form>
+    <% } %>
+    <a href="/categories">Back to all sections</a>
+</body>
+</html>
