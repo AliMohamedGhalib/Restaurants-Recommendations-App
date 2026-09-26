@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Restaurant</title>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <h1>Add a New Restaurant</h1>
+
+    <form action="/restaurants" method="post">
+        <label for="name">Restaurant Name:</label>
+        <input id="name" name="name" type="text" required>
+        <label for="hasDineIn">Dine-in:</label>
+        <input id="hasDineIn" name="hasDineIn" type="checkbox">
+
+        <label for="hasTakeAway">Take Away:</label>
+        <input id="hasTakeAway" name="hasTakeAway" type="checkbox">
+
+        <label for="hasDriveThrough">Drive-Through:</label>
+        <input id="hasDriveThrough" name="hasDriveThrough" type="checkbox">
+
+        <label for="priceLevel">Budget:</label>
+        <select id="priceLevel" name="priceLevel">
+            <option value="2BD and below">2BD and below</option>
+            <option value="Above 2BD-4BD">Above 2BD-4BD</option>
+            <option value="Above 4BD-6BD">Above 4BD-6BD</option>
+            <option value="Fine Dining">Fine Dining</option>
+        </select>
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+            <% for (let oneCategory of categories) { %>
+                <option value="<%= oneCategory._id %>"><%= oneCategory.name %></option>
+            <% } %>
+        </select>
+
+        <label for="locationLink">Google Maps Link:</label>
+        <input id="locationLink" name="locationLink" type="text">
+
+        <button>Add Restaurant</button>
+    </form>
+</body>
+</html>
