@@ -1,19 +1,29 @@
-const express = require("express");
-const router = express.Router();
-const Restaurant = require("../models/Restaurant.js");
-const isSignedIn = require("../middleware/is-signed-in.js");
+const express = require("express")
+const router = express.Router()
+const Restaurant = require("../models/Restaurant.js")
+const isSignedIn = require("../middleware/is-signed-in.js")
+const Category = require("../models/Category.js");
+
 
 router.get("/", async (req, res) => {
   const restaurants = await Restaurant.find()
   res.render("restaurants/index.ejs", { restaurants })
 })
 
-router.get("/new", isSignedIn, (req, res) => {
-  res.render("restaurants/new.ejs")
+router.get("/new", isSignedIn, async (req, res) => {
+  const categories = await Category.find()
+  res.render("restaurants/new.ejs", { categories })
 })
 
+
 router.post("/", isSignedIn, async (req, res) => {
-  await Restaurant.create({ ...req.body, owner: req.session.user._id })
+  await Restaurant.create({
+    ...req.body,
+    hasDineIn: req.body.hasDineIn === "on",
+    hasTakeAway: req.body.hasTakeAway === "on",
+    hasDriveThrough: req.body.hasDriveThrough === "on",
+    owner: req.session.user._id
+  })
   res.redirect("/restaurants")
 })
 
