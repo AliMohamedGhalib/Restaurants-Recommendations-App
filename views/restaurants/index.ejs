@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants</title>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <h1>All Restaurants</h1>
+
+    <% if (user) { %>
+        <a href="/restaurants/new">Add a New Restaurant</a>
+    <% } %>
+    <% for (let restaurant of restaurants) { %>
+        <p>
+            <a href="/restaurants/<%= restaurant._id %>"><%= restaurant.name %></a>
+        </p>
+    <% } %>
+</body>
+</html>

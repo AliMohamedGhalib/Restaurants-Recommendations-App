@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= restaurant.name %></title>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <h1><%= restaurant.name %></h1>
+
+    <p>Budget: <%= restaurant.priceLevel %></p>
+    <p>Dine-in: <%= restaurant.hasDineIn ? "Yes" : "No" %></p>
+    <p>Take Away: <%= restaurant.hasTakeAway ? "Yes" : "No" %></p>
+    <p>Drive-Through: <%= restaurant.hasDriveThrough ? "Yes" : "No" %></p>
+    <% if (restaurant.locationLink) { %>
+        <p><a href="<%= restaurant.locationLink %>" target="_blank">Take me to it!</a></p>
+    <% } %>
+    <% if (user && restaurant.owner.toString() === user._id.toString()) { %>
+        <a href="/restaurants/<%= restaurant._id %>/edit">Edit</a>
+
+        <form action="/restaurants/<%= restaurant._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
+        </form>
+    <% } %>
+
+    <a href="/restaurants">Back to all restaurants</a>
+</body>
+</html>
