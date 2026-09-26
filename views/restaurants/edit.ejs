@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit <%= restaurant.name %></title>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <h1>Edit Restaurant</h1>
+
+    <form action="/restaurants/<%= restaurant._id %>?_method=PUT" method="POST">
+        <label for="name">Restaurant Name:</label>
+        <input id="name" name="name" type="text" value="<%= restaurant.name %>" required>
+
+        <label for="hasDineIn">Dine-in:</label>
+        <input id="hasDineIn" name="hasDineIn" type="checkbox" <%= restaurant.hasDineIn ? "checked" : "" %>>
+
+        <label for="hasTakeAway">Take Away:</label>
+        <input id="hasTakeAway" name="hasTakeAway" type="checkbox" <%= restaurant.hasTakeAway ? "checked" : "" %>>
+
+        <label for="hasDriveThrough">Drive-Through:</label>
+        <input id="hasDriveThrough" name="hasDriveThrough" type="checkbox" <%= restaurant.hasDriveThrough ? "checked" : "" %>>
+        <label for="priceLevel">Budget:</label>
+        <select id="priceLevel" name="priceLevel">
+            <option value="2BD and below" <%= restaurant.priceLevel === "2BD and below" ? "selected" : "" %>>2BD and below</option>
+            <option value="Above 2BD-4BD" <%= restaurant.priceLevel === "Above 2BD-4BD" ? "selected" : "" %>>Above 2BD-4BD</option>
+            <option value="Above 4BD-6BD" <%= restaurant.priceLevel === "Above 4BD-6BD" ? "selected" : "" %>>Above 4BD-6BD</option>
+            <option value="Fine Dining" <%= restaurant.priceLevel === "Fine Dining" ? "selected" : "" %>>Fine Dining</option>
+        </select>
+
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+            <% for (let oneCategory of categories) { %>
+                <option value="<%= oneCategory._id %>" <%= restaurant.category.toString() === oneCategory._id.toString() ? "selected" : "" %>><%= oneCategory.name %></option>
+            <% } %>
+        </select>
+        <label for="locationLink">Google Maps Link:</label>
+        <input id="locationLink" name="locationLink" type="text" value="<%= restaurant.locationLink %>">
+
+        <button>Update Restaurant</button>
+    </form>
+
+    <a href="/restaurants/<%= restaurant._id %>">Cancel</a>
+</body>
+</html>

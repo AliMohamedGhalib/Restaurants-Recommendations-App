@@ -38,7 +38,8 @@ router.get("/:id/edit", isSignedIn, async (req, res) => {
   if (restaurant.owner.toString() !== req.session.user._id.toString()) {
     return res.redirect("/restaurants")
   }
-  res.render("restaurants/edit.ejs", { restaurant })
+  const categories = await Category.find()
+  res.render("restaurants/edit.ejs", { restaurant, categories })
 })
 
 router.put("/:id", isSignedIn, async (req, res) => {
@@ -46,7 +47,12 @@ router.put("/:id", isSignedIn, async (req, res) => {
   if (restaurant.owner.toString() !== req.session.user._id.toString()) {
     return res.redirect("/restaurants")
   }
-  await Restaurant.findByIdAndUpdate(req.params.id, req.body)
+  await Restaurant.findByIdAndUpdate(req.params.id, {
+    ...req.body,
+    hasDineIn: req.body.hasDineIn === "on",
+    hasTakeAway: req.body.hasTakeAway === "on",
+    hasDriveThrough: req.body.hasDriveThrough === "on",
+  })
   res.redirect(`/restaurants/${req.params.id}`)
 })
 
