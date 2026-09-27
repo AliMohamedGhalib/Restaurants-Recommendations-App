@@ -20,6 +20,10 @@ const restaurantController = require("./routes/restaurant.routes.js");
 const categoryController = require("./routes/category.routes.js");
 
 
+const searchController = require("./routes/search.routes.js");
+
+
+
 // Middleware
 app.use(express.static('public')) // my app will serve all static files from public folder
 app.use(express.urlencoded({ extended: false }));
@@ -57,7 +61,10 @@ app.use(passUserToView)
 app.use('/auth',authController)
 app.use('/restaurants', restaurantController);
 app.use('/categories', categoryController);
+app.use('/search', searchController);
 app.use('/',indexController)
+
+
 
 
 
