@@ -15,6 +15,12 @@ router.get("/new", isSignedIn, async (req, res) => {
   res.render("restaurants/new.ejs", { categories })
 })
 
+router.get("/mine", isSignedIn, async (req, res) => {
+  const restaurants = await Restaurant.find({ owner: req.session.user._id })
+  res.render("restaurants/mine.ejs", { restaurants })
+})
+
+
 
 router.post("/", isSignedIn, async (req, res) => {
   await Restaurant.create({

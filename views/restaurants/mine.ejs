@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Restaurants</title>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <h1>My Restaurants</h1>
+
+    <% if (restaurants.length === 0) { %>
+        <p>You haven't added any restaurants yet.</p>
+    <% } %>
+    <% for (let restaurant of restaurants) { %>
+        <p>
+            <a href="/restaurants/<%= restaurant._id %>"><%= restaurant.name %></a>
+        </p>
+    <% } %>
+
+    <a href="/restaurants/new">Add a New Restaurant</a>
+</body>
+</html>
