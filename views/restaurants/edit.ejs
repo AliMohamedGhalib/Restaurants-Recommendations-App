@@ -30,12 +30,11 @@
             <option value="Above 6BD" <%= restaurant.priceLevel === "Above 6BD" ? "selected" : "" %>>Above 6BD</option>
         </select>
 
-        <label for="category">Category:</label>
-        <select id="category" name="category">
-            <% for (let oneCategory of categories) { %>
-                <option value="<%= oneCategory._id %>" <%= restaurant.category.toString() === oneCategory._id.toString() ? "selected" : "" %>><%= oneCategory.name %></option>
-            <% } %>
-        </select>
+        <label>Categories:</label>
+        <% for (let oneCategory of categories) { %>
+            <label for="<%= oneCategory._id %>"><%= oneCategory.name %>:</label>
+            <input id="<%= oneCategory._id %>" name="categories" type="checkbox" value="<%= oneCategory._id %>" <%= restaurant.categories.some(c => c.toString() === oneCategory._id.toString()) ? "checked" : "" %>>
+        <% } %>
         <label for="locationLink">Google Maps Link:</label>
         <input id="locationLink" name="locationLink" type="text" value="<%= restaurant.locationLink %>">
 

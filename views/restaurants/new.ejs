@@ -29,12 +29,11 @@
             <option value="Above 4BD-6BD">Above 4BD-6BD</option>
             <option value="Above 6BD">Above 6BD</option>
         </select>
-        <label for="category">Category:</label>
-        <select id="category" name="category">
-            <% for (let oneCategory of categories) { %>
-                <option value="<%= oneCategory._id %>"><%= oneCategory.name %></option>
-            <% } %>
-        </select>
+        <label>Categories:</label>
+        <% for (let oneCategory of categories) { %>
+            <label for="<%= oneCategory._id %>"><%= oneCategory.name %>:</label>
+            <input id="<%= oneCategory._id %>" name="categories" type="checkbox" value="<%= oneCategory._id %>">
+        <% } %>
 
         <label for="locationLink">Google Maps Link:</label>
         <input id="locationLink" name="locationLink" type="text">

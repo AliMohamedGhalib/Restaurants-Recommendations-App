@@ -14,7 +14,13 @@
     <p>Dine-in: <%= restaurant.hasDineIn ? "Yes" : "No" %></p>
     <p>Take Away: <%= restaurant.hasTakeAway ? "Yes" : "No" %></p>
     <p>Drive-Through: <%= restaurant.hasDriveThrough ? "Yes" : "No" %></p>
-    
+
+    <p>Categories:
+    <% for (let oneCategory of restaurant.categories) { %>
+        <%= oneCategory.name %>
+    <% } %>
+    </p>
+
         <% if (restaurant.image) { %>
         <img src="<%= restaurant.image %>" alt="<%= restaurant.name %>" width="300">
     <% } %>

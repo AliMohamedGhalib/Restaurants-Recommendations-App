@@ -23,18 +23,24 @@ router.get("/mine", isSignedIn, async (req, res) => {
 
 
 router.post("/", isSignedIn, async (req, res) => {
+  let categories = req.body.categories || []
+  if (typeof categories === "string") {
+    categories = [categories]
+  }
+
   await Restaurant.create({
     ...req.body,
     hasDineIn: req.body.hasDineIn === "on",
     hasTakeAway: req.body.hasTakeAway === "on",
     hasDriveThrough: req.body.hasDriveThrough === "on",
+    categories,
     owner: req.session.user._id
   })
   res.redirect("/restaurants")
 })
 
 router.get("/:id", async (req, res) => {
-  const restaurant = await Restaurant.findById(req.params.id)
+  const restaurant = await Restaurant.findById(req.params.id).populate("categories")
   res.render("restaurants/show.ejs", { restaurant })
 })
 
@@ -53,11 +59,17 @@ router.put("/:id", isSignedIn, async (req, res) => {
   if (restaurant.owner.toString() !== req.session.user._id.toString()) {
     return res.redirect("/restaurants")
   }
+  let categories = req.body.categories || []
+  if (typeof categories === "string") {
+    categories = [categories]
+  }
+
   await Restaurant.findByIdAndUpdate(req.params.id, {
     ...req.body,
     hasDineIn: req.body.hasDineIn === "on",
     hasTakeAway: req.body.hasTakeAway === "on",
     hasDriveThrough: req.body.hasDriveThrough === "on",
+    categories,
   })
   res.redirect(`/restaurants/${req.params.id}`)
 })

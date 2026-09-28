@@ -1,0 +1,13 @@
+/* -------- Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #222;
+  background: #f7f7f7;
+  line-height: 1.5;
+}

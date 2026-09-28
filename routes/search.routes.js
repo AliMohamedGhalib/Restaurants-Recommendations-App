@@ -61,7 +61,10 @@ router.post("/results", async (req, res) => {
     if (hasTakeAway && !restaurant.hasTakeAway) return false
     if (hasDriveThrough && !restaurant.hasDriveThrough) return false
     if (priceLevels.length > 0 && !priceLevels.includes(restaurant.priceLevel)) return false
-    if (categoryIds.length > 0 && !categoryIds.includes(restaurant.category.toString())) return false
+    if (categoryIds.length > 0) {
+      const matchesCategory = restaurant.categories.some((c) => categoryIds.includes(c.toString()))
+      if (!matchesCategory) return false
+    }
     return true
   })
 

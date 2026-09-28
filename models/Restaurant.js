@@ -19,10 +19,10 @@ const restaurantSchema = new mongoose.Schema({
         image: String,
 
 
-    category: {
+    categories: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
-    },
+    }],
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
