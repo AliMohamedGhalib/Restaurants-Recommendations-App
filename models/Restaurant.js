@@ -12,7 +12,7 @@ const restaurantSchema = new mongoose.Schema({
     hasDriveThrough: Boolean,
         priceLevel: {
         type: String,
-        enum: ['2BD and below', 'Above 2BD-4BD', 'Above 4BD-6BD', 'Fine Dining']
+        enum: ['2BD and below', 'Above 2BD-4BD', 'Above 4BD-6BD', 'Above 6BD']
     },
 
     locationLink: String,

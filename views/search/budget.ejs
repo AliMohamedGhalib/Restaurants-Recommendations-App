@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <h1>What's your budget?</h1>
+    <form action="/search/budget" method="post">
+        <input type="hidden" name="hasDineIn" value="<%= hasDineIn %>">
+        <input type="hidden" name="hasTakeAway" value="<%= hasTakeAway %>">
+        <input type="hidden" name="hasDriveThrough" value="<%= hasDriveThrough %>">
+
+        <label for="tier1">2BD and below:</label>
+        <input id="tier1" name="priceLevel" type="checkbox" value="2BD and below">
+
+        <label for="tier2">Above 2BD-4BD:</label>
+        <input id="tier2" name="priceLevel" type="checkbox" value="Above 2BD-4BD">
+
+        <label for="tier3">Above 4BD-6BD:</label>
+        <input id="tier3" name="priceLevel" type="checkbox" value="Above 4BD-6BD">
+
+        <label for="tier4">Above 6BD:</label>
+        <input id="tier4" name="priceLevel" type="checkbox" value="Above 6BD">
+
+        <button>Next</button>
+    </form>
+</body>
+</html>

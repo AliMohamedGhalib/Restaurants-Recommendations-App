@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <h1>How would you like to eat?</h1>
+    <form action="/search/service" method="post">
+        <label for="hasDineIn">Dine-in:</label>
+        <input id="hasDineIn" name="hasDineIn" type="checkbox">
+
+        <label for="hasTakeAway">Take Away:</label>
+        <input id="hasTakeAway" name="hasTakeAway" type="checkbox">
+
+        <button>Next</button>
+    </form>
+</body>
+</html>

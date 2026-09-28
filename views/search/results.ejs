@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <h1>Recommended Restaurants</h1>
+
+    <% if (restaurants.length === 0) { %>
+        <p>No restaurants matched your search.</p>
+    <% } %>
+
+    <% for (let restaurant of restaurants) { %>
+        <p>
+            <a href="/restaurants/<%= restaurant._id %>"><%= restaurant.name %></a>
+        </p>
+    <% } %>
+
+    <a href="/search">Search Again</a>
+</body>
+</html>
