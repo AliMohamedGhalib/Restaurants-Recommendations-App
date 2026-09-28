@@ -16,6 +16,8 @@ const restaurantSchema = new mongoose.Schema({
     },
 
     locationLink: String,
+        image: String,
+
 
     category: {
         type: mongoose.Schema.Types.ObjectId,

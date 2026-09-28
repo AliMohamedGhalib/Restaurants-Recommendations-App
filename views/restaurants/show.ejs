@@ -14,6 +14,11 @@
     <p>Dine-in: <%= restaurant.hasDineIn ? "Yes" : "No" %></p>
     <p>Take Away: <%= restaurant.hasTakeAway ? "Yes" : "No" %></p>
     <p>Drive-Through: <%= restaurant.hasDriveThrough ? "Yes" : "No" %></p>
+    
+        <% if (restaurant.image) { %>
+        <img src="<%= restaurant.image %>" alt="<%= restaurant.name %>" width="300">
+    <% } %>
+
     <% if (restaurant.locationLink) { %>
         <p><a href="<%= restaurant.locationLink %>" target="_blank">Take me to it!</a></p>
     <% } %>

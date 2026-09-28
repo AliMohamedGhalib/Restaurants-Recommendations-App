@@ -8,7 +8,19 @@
 <body>
     <%- include('./partials/navbar') %>
 
-    <h1>Welcome to my Website</h1>
+        <h1>What would you like to do?</h1>
+
+    <a href="/search">Search for a Restaurant</a>
+
+    <% if (user) { %>
+        <a href="/restaurants/new">Create a Restaurant</a>
+        <a href="/restaurants/mine">Edit My Restaurants</a>
+    <% } else { %>
+        <p>You need to sign in to create or edit restaurants.</p>
+        <a href="/auth/sign-in">Sign in</a>
+        <a href="/auth/sign-up">Sign up</a>
+    <% } %>
+
     
 </body>
 </html>
