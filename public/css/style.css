@@ -7,8 +7,8 @@
 
 body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  color: #222;
-  background: #f7f7f7;
+  color: #2b2118;
+  background: #fffafa;
   line-height: 1.5;
 }
 
@@ -18,16 +18,129 @@ nav {
   align-items: center;
   gap: 20px;
   padding: 16px 30px;
-  background: #fff;
-  border-bottom: 1px solid #ddd;
+  background: #e8d9c3;
+  border-bottom: 1px solid #d4c0a1;
 }
 
 nav a {
   text-decoration: none;
-  color: #333;
+  color: #2b2118;
   font-weight: 600;
 }
 
 nav a:hover {
-  color: #e0417b;
+  color: #6b4423;
+}
+
+/* ---------- Buttons ---------- */
+button {
+  background: #6b4423;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #4a2f18;
+}
+
+/* ---------- Forms ---------- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  padding: 20px 30px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"],
+select,
+textarea {
+  padding: 10px;
+  border: 1px solid #d4c0a1;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #ffffff;
+}
+
+/* ---------- Headings & text ---------- */
+h1 {
+  padding: 30px 30px 10px;
+  font-size: 28px;
+}
+
+p {
+  padding: 0 30px;
+  margin-bottom: 10px;
+}
+
+a {
+  color: #6b4423;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  border-radius: 8px;
+  margin: 10px 30px;
+  display: block;
+}
+
+/* ---------- Card grid ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px 30px;
+}
+
+.card {
+  background: #f5ead9;
+  border: 2px solid #d4c0a1;
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+}
+
+.card img {
+  max-width: 100%;
+  max-height: 200px;
+  margin: 0 auto 10px;
+  display: block;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  form {
+    max-width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }

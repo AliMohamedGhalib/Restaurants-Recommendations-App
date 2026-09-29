@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete <%= restaurant.name %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <h1>Delete <%= restaurant.name %>?</h1>
+
+    <p>This cannot be undone.</p>
+
+    <form action="/restaurants/<%= restaurant._id %>?_method=DELETE" method="POST">
+        <button type="submit">Yes, Delete</button>
+    </form>
+
+    <p><a href="/restaurants/<%= restaurant._id %>">Cancel</a></p>
+</body>
+</html>

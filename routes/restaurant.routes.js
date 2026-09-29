@@ -29,10 +29,13 @@ router.post("/", isSignedIn, async (req, res) => {
   }
 
   await Restaurant.create({
-    ...req.body,
+    name: req.body.name,
     hasDineIn: req.body.hasDineIn === "on",
     hasTakeAway: req.body.hasTakeAway === "on",
     hasDriveThrough: req.body.hasDriveThrough === "on",
+    priceLevel: req.body.priceLevel,
+    locationLink: req.body.locationLink,
+    image: req.body.image,
     categories,
     owner: req.session.user._id
   })
@@ -54,6 +57,14 @@ router.get("/:id/edit", isSignedIn, async (req, res) => {
   res.render("restaurants/edit.ejs", { restaurant, categories })
 })
 
+router.get("/:id/delete", isSignedIn, async (req, res) => {
+  const restaurant = await Restaurant.findById(req.params.id)
+  if (restaurant.owner.toString() !== req.session.user._id.toString()) {
+    return res.redirect("/restaurants")
+  }
+  res.render("restaurants/delete-confirm.ejs", { restaurant })
+})
+
 router.put("/:id", isSignedIn, async (req, res) => {
   const restaurant = await Restaurant.findById(req.params.id)
   if (restaurant.owner.toString() !== req.session.user._id.toString()) {
@@ -65,10 +76,13 @@ router.put("/:id", isSignedIn, async (req, res) => {
   }
 
   await Restaurant.findByIdAndUpdate(req.params.id, {
-    ...req.body,
+    name: req.body.name,
     hasDineIn: req.body.hasDineIn === "on",
     hasTakeAway: req.body.hasTakeAway === "on",
     hasDriveThrough: req.body.hasDriveThrough === "on",
+    priceLevel: req.body.priceLevel,
+    locationLink: req.body.locationLink,
+    image: req.body.image,
     categories,
   })
   res.redirect(`/restaurants/${req.params.id}`)

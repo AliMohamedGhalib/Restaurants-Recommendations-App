@@ -13,15 +13,15 @@
 
         <h1>What would you like to do?</h1>
 
-    <a href="/search">Search for a Restaurant</a>
+    <p><a href="/search">Search for a Restaurant</a></p>
 
     <% if (user) { %>
-        <a href="/restaurants/new">Create a Restaurant</a>
-        <a href="/restaurants/mine">Edit My Restaurants</a>
+        <p><a href="/restaurants/new">Create a Restaurant</a></p>
+        <p><a href="/restaurants/mine">Edit My Restaurants</a></p>
     <% } else { %>
         <p>You need to sign in to create or edit restaurants.</p>
-        <a href="/auth/sign-in">Sign in</a>
-        <a href="/auth/sign-up">Sign up</a>
+        <p><a href="/auth/sign-in">Sign in</a></p>
+        <p><a href="/auth/sign-up">Sign up</a></p>
     <% } %>
 
     

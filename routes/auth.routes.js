@@ -15,14 +15,16 @@ router.post("/sign-up", async (req, res) => {
     return res.send("Username already taken.");
   }
 
+  if (req.body.password.length < 4) {
+    return res.send("Password must be at least 4 characters long.");
+  }
+
   if (req.body.password !== req.body.confirmPassword) {
     return res.send("Password and Confirm Password must match");
   }
 
   const hashedPassword = bcrypt.hashSync(req.body.password, 10);
   req.body.password = hashedPassword;
-
-  // validation logic
 
   const user = await User.create(req.body);
   res.redirect("/auth/sign-in");

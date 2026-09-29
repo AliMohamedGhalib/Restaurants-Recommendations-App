@@ -11,12 +11,10 @@
 
     <h1><%= category.name %></h1>
     <% if (user && category.owner.toString() === user._id.toString()) { %>
-        <a href="/categories/<%= category._id %>/edit">Edit</a>
+        <p><a href="/categories/<%= category._id %>/edit">Edit</a></p>
 
-        <form action="/categories/<%= category._id %>?_method=DELETE" method="POST">
-            <button type="submit">Delete</button>
-        </form>
+        <p><a href="/categories/<%= category._id %>/delete">Delete</a></p>
     <% } %>
-    <a href="/categories">Back to all sections</a>
+    <p><a href="/categories">Back to all sections</a></p>
 </body>
 </html>

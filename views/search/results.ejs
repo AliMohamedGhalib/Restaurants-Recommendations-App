@@ -15,16 +15,18 @@
         <p>No restaurants matched your search.</p>
     <% } %>
 
-       <% for (let restaurant of restaurants) { %>
-        <p>
-            <a href="/restaurants/<%= restaurant._id %>"><%= restaurant.name %></a>
-        </p>
-        <% if (restaurant.image) { %>
-            <img src="<%= restaurant.image %>" alt="<%= restaurant.name %>" width="150">
+    <div class="grid">
+        <% for (let restaurant of restaurants) { %>
+            <div class="card">
+                <% if (restaurant.image) { %>
+                    <img src="<%= restaurant.image %>" alt="<%= restaurant.name %>">
+                <% } %>
+                <a href="/restaurants/<%= restaurant._id %>"><%= restaurant.name %></a>
+            </div>
         <% } %>
-    <% } %>
+    </div>
 
 
-    <a href="/search">Search Again</a>
+    <p><a href="/search">Search Again</a></p>
 </body>
 </html>

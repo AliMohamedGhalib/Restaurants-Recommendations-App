@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit <%= category.name %></title>
+    <title>Delete <%= category.name %></title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <%- include('../partials/navbar') %>
 
-    <h1>Edit Section</h1>
-    <form action="/categories/<%= category._id %>?_method=PUT" method="POST">
-        <label for="name">Section Name:</label>
-        <input id="name" name="name" type="text" value="<%= category.name %>" required>
+    <h1>Delete <%= category.name %>?</h1>
 
-        <button>Update Section</button>
+    <p>This cannot be undone.</p>
+
+    <form action="/categories/<%= category._id %>?_method=DELETE" method="POST">
+        <button type="submit">Yes, Delete</button>
     </form>
+
     <p><a href="/categories/<%= category._id %>">Cancel</a></p>
 </body>
 </html>

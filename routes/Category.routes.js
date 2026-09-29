@@ -15,7 +15,10 @@ router.get("/new", isSignedIn, (req, res) => {
 })
 
 router.post("/", isSignedIn, async (req, res) => {
-  await Category.create({ ...req.body, owner: req.session.user._id })
+  await Category.create({
+    name: req.body.name,
+    owner: req.session.user._id
+  })
   res.redirect("/categories")
 })
 
@@ -28,6 +31,11 @@ router.get("/:id", async (req, res) => {
 router.get("/:id/edit", isSignedIn, async (req, res) => {
   const category = await Category.findById(req.params.id)
   res.render("categories/edit.ejs", { category })
+})
+
+router.get("/:id/delete", isSignedIn, async (req, res) => {
+  const category = await Category.findById(req.params.id)
+  res.render("categories/delete-confirm.ejs", { category })
 })
 
 router.put("/:id", isSignedIn, async (req, res) => {

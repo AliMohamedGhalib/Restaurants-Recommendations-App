@@ -64,6 +64,10 @@ app.use('/categories', categoryController);
 app.use('/search', searchController);
 app.use('/',indexController)
 
+app.use((req, res) => {
+    res.status(404).render('404.ejs')
+})
+
 
 
 

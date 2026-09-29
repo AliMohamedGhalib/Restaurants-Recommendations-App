@@ -11,12 +11,14 @@
 
     <h1>All Sections</h1>
     <% if (user) { %>
-        <a href="/categories/new">Create a New Section</a>
+        <p><a href="/categories/new">Create a New Section</a></p>
     <% } %>
-    <% for (let category of categories) { %>
-        <p>
-            <a href="/categories/<%= category._id %>"><%= category.name %></a>
-        </p>
-    <% } %>
+    <div class="grid">
+        <% for (let category of categories) { %>
+            <div class="card">
+                <a href="/categories/<%= category._id %>"><%= category.name %></a>
+            </div>
+        <% } %>
+    </div>
 </body>
 </html>

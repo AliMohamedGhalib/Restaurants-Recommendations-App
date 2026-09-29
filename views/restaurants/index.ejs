@@ -12,16 +12,17 @@
     <h1>All Restaurants</h1>
 
     <% if (user) { %>
-        <a href="/restaurants/new">Add a New Restaurant</a>
+        <p><a href="/restaurants/new">Add a New Restaurant</a></p>
     <% } %>
-    <% for (let restaurant of restaurants) { %>
-        <p>
-            <a href="/restaurants/<%= restaurant._id %>"><%= restaurant.name %></a>
-        </p>
+    <div class="grid">
+        <% for (let restaurant of restaurants) { %>
+            <div class="card">
                 <% if (restaurant.image) { %>
-            <img src="<%= restaurant.image %>" alt="<%= restaurant.name %>" width="150">
+                    <img src="<%= restaurant.image %>" alt="<%= restaurant.name %>">
+                <% } %>
+                <a href="/restaurants/<%= restaurant._id %>"><%= restaurant.name %></a>
+            </div>
         <% } %>
-
-    <% } %>
+    </div>
 </body>
 </html>

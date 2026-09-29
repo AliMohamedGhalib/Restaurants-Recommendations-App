@@ -30,13 +30,11 @@
         <p><a href="<%= restaurant.locationLink %>" target="_blank">Take me to it!</a></p>
     <% } %>
     <% if (user && restaurant.owner.toString() === user._id.toString()) { %>
-        <a href="/restaurants/<%= restaurant._id %>/edit">Edit</a>
+        <p><a href="/restaurants/<%= restaurant._id %>/edit">Edit</a></p>
 
-        <form action="/restaurants/<%= restaurant._id %>?_method=DELETE" method="POST">
-            <button type="submit">Delete</button>
-        </form>
+        <p><a href="/restaurants/<%= restaurant._id %>/delete">Delete</a></p>
     <% } %>
 
-    <a href="/restaurants">Back to all restaurants</a>
+    <p><a href="/restaurants">Back to all restaurants</a></p>
 </body>
 </html>
