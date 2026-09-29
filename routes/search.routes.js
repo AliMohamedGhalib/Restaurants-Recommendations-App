@@ -57,9 +57,14 @@ router.post("/results", async (req, res) => {
   const allRestaurants = await Restaurant.find()
 
   const restaurants = allRestaurants.filter((restaurant) => {
-    if (hasDineIn && !restaurant.hasDineIn) return false
-    if (hasTakeAway && !restaurant.hasTakeAway) return false
-    if (hasDriveThrough && !restaurant.hasDriveThrough) return false
+    const anyServiceSelected = hasDineIn || hasTakeAway || hasDriveThrough
+    if (anyServiceSelected) {
+      const matchesService =
+        (hasDineIn && restaurant.hasDineIn) ||
+        (hasTakeAway && restaurant.hasTakeAway) ||
+        (hasDriveThrough && restaurant.hasDriveThrough)
+      if (!matchesService) return false
+    }
     if (priceLevels.length > 0 && !priceLevels.includes(restaurant.priceLevel)) return false
     if (categoryIds.length > 0) {
       const matchesCategory = restaurant.categories.some((c) => categoryIds.includes(c.toString()))

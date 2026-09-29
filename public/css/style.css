@@ -11,3 +11,23 @@ body {
   background: #f7f7f7;
   line-height: 1.5;
 }
+
+/* ---------- Nav ---------- */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 30px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: #e0417b;
+}

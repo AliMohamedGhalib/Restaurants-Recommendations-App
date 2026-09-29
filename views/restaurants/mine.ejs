@@ -17,6 +17,10 @@
         <p>
             <a href="/restaurants/<%= restaurant._id %>"><%= restaurant.name %></a>
         </p>
+                <% if (restaurant.image) { %>
+            <img src="<%= restaurant.image %>" alt="<%= restaurant.name %>" width="150">
+        <% } %>
+
     <% } %>
 
     <a href="/restaurants/new">Add a New Restaurant</a>

@@ -14,11 +14,15 @@
         <p>No restaurants matched your search.</p>
     <% } %>
 
-    <% for (let restaurant of restaurants) { %>
+       <% for (let restaurant of restaurants) { %>
         <p>
             <a href="/restaurants/<%= restaurant._id %>"><%= restaurant.name %></a>
         </p>
+        <% if (restaurant.image) { %>
+            <img src="<%= restaurant.image %>" alt="<%= restaurant.name %>" width="150">
+        <% } %>
     <% } %>
+
 
     <a href="/search">Search Again</a>
 </body>
