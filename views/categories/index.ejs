@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sections</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
     <%- include('../partials/navbar') %>
 
+    <main>
     <h1>All Sections</h1>
     <% if (user) { %>
         <p><a href="/categories/new">Create a New Section</a></p>
+    <% } %>
+    <% if (categories.length === 0) { %>
+        <p>No sections available yet.</p>
     <% } %>
     <div class="grid">
         <% for (let category of categories) { %>
@@ -20,5 +25,6 @@
             </div>
         <% } %>
     </div>
+    </main>
 </body>
 </html>

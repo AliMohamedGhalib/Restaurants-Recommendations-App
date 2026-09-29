@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit <%= category.name %></title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
     <%- include('../partials/navbar') %>
 
+    <main>
     <h1>Edit Section</h1>
     <form action="/categories/<%= category._id %>?_method=PUT" method="POST">
         <label for="name">Section Name:</label>
@@ -17,5 +19,6 @@
         <button>Update Section</button>
     </form>
     <p><a href="/categories/<%= category._id %>">Cancel</a></p>
+    </main>
 </body>
 </html>

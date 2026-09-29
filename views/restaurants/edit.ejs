@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit <%= restaurant.name %></title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
     <%- include('../partials/navbar') %>
 
+    <main>
     <h1>Edit Restaurant</h1>
 
     <form action="/restaurants/<%= restaurant._id %>?_method=PUT" method="POST">
@@ -47,5 +49,6 @@
     </form>
 
     <p><a href="/restaurants/<%= restaurant._id %>">Cancel</a></p>
+    </main>
 </body>
 </html>

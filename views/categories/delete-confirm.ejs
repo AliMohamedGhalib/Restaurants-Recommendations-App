@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete <%= category.name %></title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
     <%- include('../partials/navbar') %>
 
+    <main>
     <h1>Delete <%= category.name %>?</h1>
 
     <p>This cannot be undone.</p>
@@ -18,5 +20,6 @@
     </form>
 
     <p><a href="/categories/<%= category._id %>">Cancel</a></p>
+    </main>
 </body>
 </html>

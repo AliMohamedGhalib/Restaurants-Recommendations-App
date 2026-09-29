@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
     <%- include('../partials/navbar') %>
 
+    <main>
     <h1>Do you want Drive-Through?</h1>
     <form action="/search/drivethrough" method="post">
         <input type="hidden" name="hasDineIn" value="<%= hasDineIn %>">
@@ -19,5 +21,6 @@
 
         <button>Next</button>
     </form>
+    </main>
 </body>
 </html>
