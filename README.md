@@ -48,3 +48,10 @@ Claude was used as a learning aid throughout development to explain concepts alr
 - Support real image uploads (e.g. via Cloudinary) instead of pasted image URLs.
 - Support multiple locations/branches per restaurant as structured data, rather than a single Google Maps link.
 - Style checkboxes in the search flow to look like selectable buttons.
+
+## Extra Feature
+404 Erorr page
+Location button
+Delete confetmation massege 
+At least 8 digits for password
+Validation user's public creations by adding images to their restarants.
