@@ -18,7 +18,7 @@ Built as a solo project for the General Assembly Software Engineering Immersive 
 
 ## Attributions
 
-Claude was used as a learning aid throughout development to explain concepts already covered in class, and to help polish the wording of this README.
+Claude was used as a learning aid throughout development to explain concepts already covered in class, and to help polish the wording of this README, AI Claude made the logo "R".
 
 - Restaurant photos sourced from Google Images.
 - Restaurant location links point to Google Maps.
