@@ -21,8 +21,8 @@ router.post("/sign-up", async (req, res) => {
       return res.send("Username already taken.");
     }
 
-    if (req.body.password.length < 4) {
-      return res.send("Password must be at least 4 characters long.");
+    if (req.body.password.length < 8) {
+      return res.send("Password must be at least 8 characters long.");
     }
 
     if (req.body.password !== req.body.confirmPassword) {
