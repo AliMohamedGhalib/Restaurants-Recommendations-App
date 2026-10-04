@@ -55,3 +55,4 @@ Location button
 Delete confetmation massege 
 At least 8 digits for password
 Validation user's public creations by adding images to their restarants.
+Added a Logo
